@@ -4,19 +4,20 @@ public class Biblioteca {
     Jocuri[] joc = new Jocuri[3];
     String nume;
 
-    void addGame( Jocuri j) {
+    void addGame(Jocuri j) {
         for (int i = 0; i <= joc.length; i++) {
-            if(i==joc.length){
-                // tre sa creezi un nou vector de jocuri care sa copii tot din joc
-                // maresti spatiul din joc
-                // si dupa copii innapoi in joc
-                joc=new Jocuri[joc.length * 2];
+            if (i == joc.length) {
+                Jocuri[] temp = new Jocuri(joc.length*2);
+                 for(int i=0 ; i<joc.length; i++){
+                     temp[i] = joc[i];
+                 }
+                 joc = temp;
             }
-            if(joc[i]==null){
-                joc[i]=j;
+            if (joc[i] == null) {
+                joc[i] = j;
                 break;
-            }else{
-                if(joc[i].numeJoc.equals(j.numeJoc)){
+            } else {
+                if (joc[i].numeJoc.equals(j.numeJoc)) {
                     System.out.println("Jocul este introdus");
                     break;
                 }
@@ -37,13 +38,14 @@ public class Biblioteca {
                 System.out.println("Jocul deja exista");
                 break;
             }*/
-    void remove (String numeJoc){
-        for(int i=0 ; i<joc.length ; i++){
-            if(joc[i] != null){
-                if(numeJoc==joc[i].numeJoc){
-                    joc[i]=null;
+    void remove(String numeJoc) {
+        for (int i = 0; i < joc.length; i++) {
+            if (joc[i] != null) {
+                if (numeJoc == joc[i].numeJoc) {
+                    joc[i] = null;
                     break;
                 }
+                System.out.println("Jocul nu exista");
             }
         }
     }

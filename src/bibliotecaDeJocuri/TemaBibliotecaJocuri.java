@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TemaBibliotecaJocuri {
     public static void main(String[] args) {
-        Biblioteca b =  new Biblioteca();
+        Biblioteca b = new Biblioteca();
         b.nume = "Jocuri sport";
         Jocuri j = new Jocuri();
         j.numeJoc = "Fifa2022";
@@ -13,18 +13,16 @@ public class TemaBibliotecaJocuri {
         j.tipDeJoc = "Fotbal";
 
 
-
         b.addGame(j);
         Jocuri v = new Jocuri();
-        v.numeJoc="Sims";
+        v.numeJoc = "Sims";
         b.addGame(v);
         Jocuri c = new Jocuri();
-        c.numeJoc="Titanic";
+        c.numeJoc = "Titanic";
         Jocuri d = new Jocuri();
-        d.numeJoc="Nascar";
+        d.numeJoc = "Nascar";
         b.addGame(c);
         b.addGame(d);
-
 
 
         Scanner key = new Scanner(System.in);

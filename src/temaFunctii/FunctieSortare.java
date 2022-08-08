@@ -2,7 +2,10 @@ package temaFunctii;
 
 public class FunctieSortare {
     public static void main(String[] args) {
-        int abc[] = new int[]{12, 5, 3, 10, 9};
+        int abc[] = new int[]{12, 5, 8, 10, 17};
+        functieSortare(abc);
+    }
+    static int[] functieSortare(int[] abc){
         System.out.print("Vector Initial: ");
         for (int i = 0; i < abc.length; i++) {
             System.out.print(abc[i] + " ");
@@ -20,7 +23,6 @@ public class FunctieSortare {
             }
             System.out.print(abc[i] + " ");
         }
-
-
+       return abc;
     }
 }

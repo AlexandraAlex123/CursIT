@@ -5,6 +5,10 @@ public class FunctieUnireSiSortare {
         int list1[] = new int[]{2, 5, 6, 9, 12};
         int list2[] = new int[]{3, 4, 10, 11, 15};
         int coList[] = new int[list1.length + list2.length];
+        functieUnireSiSortare(list1, list2, coList);
+    }
+
+    static int[] functieUnireSiSortare(int[] list1, int[] list2, int[] coList) {
         System.out.print("Prima lista: ");
         for (int i = 0; i < list1.length; i++) {
             coList[i] = list1[i];
@@ -31,7 +35,7 @@ public class FunctieUnireSiSortare {
             }
             System.out.print(coList[i] + " ");
         }
-
+        return coList;
     }
 }
 

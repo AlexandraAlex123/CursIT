@@ -33,15 +33,13 @@ public class Biblioteca {
     }
 
     void removeProdus(String numeProdus) {
-        for (int i = 0; i < produs.size(); i++) {
-            if (produs.get(i) != null) {
-                if (numeProdus.equals(produs.get(i).getNume())) {
-                    produs.set(i, null);
-                    for (int j = i; j < produs.size() - 1; j++) {
-                        produs.set(j, produs.get(j + 1));
-                    }
-                    break;
+        for (int i = 0; i <= produs.size(); i++) {
+            if (numeProdus.equals(produs.get(i).getNume())) {
+                produs.set(i, null);
+                for (int j = i; j < produs.size() - 1; j++) {
+                    produs.set(j, produs.get(j + 1));
                 }
+                break;
             }
         }
     }
@@ -152,37 +150,37 @@ public class Biblioteca {
                     f.setDurata(Double.valueOf(s[5]));
                     f.setGender(s[6]);
                     b2.addProdus(f);
-                }else if(s[0].equals("Carte")){
-                    Carti c =new Carti();
+                } else if (s[0].equals("Carte")) {
+                    Carti c = new Carti();
                     c.setNume(s[1]);
                     c.setPret(Double.valueOf(s[2]));
                     c.setDate(s[3]);
                     c.setNrCarti(Integer.parseInt(s[4]));
                     b2.addProdus(c);
                 }
-                    System.out.println(data);
-                }
-
-            } catch(IOException e){
-                System.out.println("not found");
+                System.out.println(data);
             }
-            return b2;
+
+        } catch (IOException e) {
+            System.out.println("not found");
+        }
+        return b2;
     }
 
-       public Produse citireFisier(){
-           try {
-               File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
-               Scanner myReader = new Scanner(citire);
-               while (myReader.hasNextLine()) {
-                   String data = myReader.nextLine();
-                   System.out.println(data);
-               }
+    public Produse citireFisier() {
+        try {
+            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+            Scanner myReader = new Scanner(citire);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
 
-           } catch (IOException e) {
-               System.out.println("not found");
-           }
-           return null;
-       }
+        } catch (IOException e) {
+            System.out.println("not found");
+        }
+        return null;
+    }
 
     public void getFilme() {
         for (Produse p : getP()) {

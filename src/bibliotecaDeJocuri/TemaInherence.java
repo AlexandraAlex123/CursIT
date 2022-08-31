@@ -15,8 +15,6 @@ public class TemaInherence {
         j.setPret(22.33);
         b.addProdus(j);
 
-        System.out.println(j);
-
         Jocuri j1 = new Jocuri();
         j1.setNume("Fifa");
         j1.setMultiplayer(true);

@@ -10,20 +10,12 @@ public class Jocuri extends Produse {
 
     static {
 
-        posibilTipDeJoc = new String[4];
+        posibilTipDeJoc = new String[10];
         posibilTipDeJoc[0] = "RPG";
         posibilTipDeJoc[1] = "FPS";
         posibilTipDeJoc[2] = "RTP";
         posibilTipDeJoc[3] = "JDF";
     }
-
-    public Jocuri() {
-    }
-
-    public Jocuri(double p) {
-        pret = p;
-    }
-
 
     static void modificaPTD(String nouTDJ, int pos) {
         posibilTipDeJoc[pos] = nouTDJ;
@@ -65,7 +57,4 @@ public class Jocuri extends Produse {
         return "Joc" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
     }
 
-//    public String toString(){
-//        return getClass().getName() + ";" + Integer.toHexString(hashCode());
-//   }
 }

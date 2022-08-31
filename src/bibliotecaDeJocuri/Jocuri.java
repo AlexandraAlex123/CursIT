@@ -1,43 +1,71 @@
 package bibliotecaDeJocuri;
 
-public class Jocuri {
-    private Double pret;
-    private String data;
-    private String tipDeJoc;
-    private String numeJoc;
+public class Jocuri extends Produse {
+    private String tipDeJoc; // RGP, FPS, RTS, JOC_DE_FETE
+    static String[] posibilTipDeJoc;
 
-    public String getNumeJoc() {
-        return numeJoc;
+    //singlePlayer/multiplayer
+    private boolean multiplayer;
+
+
+    static {
+
+        posibilTipDeJoc = new String[4];
+        posibilTipDeJoc[0] = "RPG";
+        posibilTipDeJoc[1] = "FPS";
+        posibilTipDeJoc[2] = "RTP";
+        posibilTipDeJoc[3] = "JDF";
     }
 
-    public void setNumeJoc(String numeJoc) {
-        this.numeJoc = numeJoc;
+    public Jocuri() {
     }
 
-    public Double getPret() {
-        return pret;
+    public Jocuri(double p) {
+        pret = p;
     }
 
-    public void setPret(Double pret) {
-        this.pret = pret;
+
+    static void modificaPTD(String nouTDJ, int pos) {
+        posibilTipDeJoc[pos] = nouTDJ;
     }
 
-    public String getData() {
-        return data;
+    void setTipDeJoc(String tdjParam) {
+        for (String tdjiterator : posibilTipDeJoc) {
+            if (tdjParam.equals(tdjiterator)) {
+                tipDeJoc = tdjParam;
+            }
+        }
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getTipDeJoc() {
+    String getTipDeJoc() {
         return tipDeJoc;
     }
 
-    public void setTipDeJoc( String tipDeJoc) {
-        this.tipDeJoc = tipDeJoc;
+    public String[] getPosibilTipDeJoc() {
+        return posibilTipDeJoc;
     }
 
+    public void setPosibilTipDeJoc(String[] posibilTipDeJoc) {
+        Jocuri.posibilTipDeJoc = posibilTipDeJoc;
+    }
 
+    public boolean isMultiplayer() {
+        return multiplayer;
+    }
 
+    public void setMultiplayer(boolean multiplayer) {
+        this.multiplayer = multiplayer;
+    }
+
+    //overriding
+    public String getNume() {
+        return nume.toLowerCase();
+    }
+    public String toString() {
+        return "Joc" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
+    }
+
+//    public String toString(){
+//        return getClass().getName() + ";" + Integer.toHexString(hashCode());
+//   }
 }

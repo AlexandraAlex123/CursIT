@@ -24,21 +24,14 @@ public class Biblioteca {
 
 
     void addProdus(Produse p) {
-        for (int i = 0; i <= produs.size(); i++) {
-            if (i == produs.size()) {
-                produs.add(i, p);
-                break;
-            }
-        }
+        produs.add(p);
     }
 
     void removeProdus(String numeProdus) {
-        for (int i = 0; i <= produs.size(); i++) {
-            if (numeProdus.equals(produs.get(i).getNume())) {
-                produs.set(i, null);
-                for (int j = i; j < produs.size() - 1; j++) {
-                    produs.set(j, produs.get(j + 1));
-                }
+        for (int i = 0; i < produs.size(); i++) {
+            String t = getP().get(i).getNume();
+            if (numeProdus.equals(t)) {
+                produs.remove(i);
                 break;
             }
         }
@@ -189,6 +182,34 @@ public class Biblioteca {
             }
         }
 
+    }
+
+
+    public boolean verificareValoareString(String stringDeVerificat) {
+        char[] c = stringDeVerificat.toCharArray();
+        if (stringDeVerificat != "") {
+            if (c.length >= 1) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+
+    public boolean verificareValoareInt(String stringDeVerificat) {
+        if (stringDeVerificat != "" && stringDeVerificat.matches("[\\d.]+")) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean verificareValoareDouble(String stringDeVerificat) {
+        if (stringDeVerificat != "" && stringDeVerificat.matches("\\d{0,2}\\.\\d{1,2}")) {
+            return true;
+        }
+        return false;
     }
 
 

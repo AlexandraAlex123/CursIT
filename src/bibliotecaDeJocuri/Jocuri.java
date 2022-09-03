@@ -25,6 +25,7 @@ public class Jocuri extends Produse {
         for (String tdjiterator : posibilTipDeJoc) {
             if (tdjParam.equals(tdjiterator)) {
                 tipDeJoc = tdjParam;
+                break;
             }
         }
     }
@@ -50,9 +51,9 @@ public class Jocuri extends Produse {
     }
 
     //overriding
-    public String getNume() {
-        return nume.toLowerCase();
-    }
+//    public String getNume() {
+//        return nume.toLowerCase();
+//    }
     public String toString() {
         return "Joc" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
     }

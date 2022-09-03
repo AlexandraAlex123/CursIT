@@ -1,6 +1,7 @@
 package bibliotecaDeJocuri;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -11,16 +12,16 @@ public class TemaFisier {
         while (true) {
             System.out.println(" ");
             System.out.println("Meniu principal :");
-            System.out.println("1 - Afisare si incarcare fisier");
-            System.out.println("2 - Adaugare produs");
-            System.out.println("3 - Stergere produs");
-            System.out.println("4 - Salvare in fisier");
-            System.out.println("5 - Citire fisier");
-            System.out.println("6 - Iesire din meniu");
+            System.out.println("1 - Afisare si incarcare fisier.");
+            System.out.println("2 - Adaugare produs.");
+            System.out.println("3 - Stergere produs.");
+            System.out.println("4 - Salvare in fisier.");
+            System.out.println("5 - Citire din fisier.");
+            System.out.println("6 - Iesire din meniu.");
             System.out.println("Introduceti comanda :");
             String comanda = key.nextLine();
-            while (b2.verificareValoareInt(comanda) == false) {
-                System.out.println("Comanda invalida. Introdu din nou :");
+            while (b2.controlInt(comanda)) {
+                System.out.println("Comanda invalida. Reintrodu comanda :");
                 comanda = key.nextLine();
             }
             int comanda2 = Integer.parseInt(comanda);
@@ -33,8 +34,8 @@ public class TemaFisier {
                 System.out.println("2 - Joc");
                 System.out.println("3 - Carte");
                 String tipProdus = key.nextLine();
-                while (b2.verificareValoareInt(tipProdus) == false) {
-                    System.out.println("Comanda invalida. Introdu din nou :");
+                while (b2.controlInt(tipProdus)) {
+                    System.out.println("Comanda invalida. Reintrodu comanda :");
                     tipProdus = key.nextLine();
                 }
                 int tipProdus2 = Integer.parseInt(tipProdus);
@@ -43,77 +44,81 @@ public class TemaFisier {
                     Filme f = new Filme();
                     System.out.println("Introdu numele filmului :");
                     String nume = key.nextLine();
-                    while (b2.verificareValoareString(nume) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
-                        nume = key.nextLine();
+                    while (b2.controlString(nume) || b2.controlDublura(nume)) {
+                        if (b2.controlString(nume)) {
+                            System.out.println("Comanda invalida. Reintrodu numele filmului :");
+                            nume = key.nextLine();
+                        } else if (b2.controlDublura(nume)) {
+                            System.out.println("Acest film exista. Reintrodu numele filmului");
+                            nume = key.nextLine();
+                        }
                     }
                     f.setNume(nume);
                     System.out.println("Introdu pretul filmului :");
                     String pret = key.nextLine();
-                    while (b2.verificareValoareDouble(pret) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlDouble(pret)) {
+                        System.out.println("Comanda invalida. Reintrodu pretul fimului :");
                         pret = key.nextLine();
                     }
                     double pret2 = Double.parseDouble(pret);
                     f.setPret(pret2);
                     System.out.println("Introdu data de lansare a filmului :");
                     String date = key.nextLine();
-                    while (b2.verificareValoareString(date) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlString(date)) {
+                        System.out.println("Comanda invalida. Reintrodu data de lansare a filmului :");
                         date = key.nextLine();
                     }
                     f.setDate(date);
-                    int test2 = 1;
-                    while (test2 == 1) {
+                    String test = "Da";
+                    while (test.equals("Da")) {
                         System.out.println("Introdu numele actorului :");
                         String aNume = key.nextLine();
-                        while (b2.verificareValoareString(aNume) == false) {
-                            System.out.println("Comanda invalida. Introdu din nou :");
+                        while (b2.controlString(aNume)) {
+                            System.out.println("Comanda invalida. Reintrodu numele actorului :");
                             aNume = key.nextLine();
                         }
                         System.out.println("Introdu prenumele actorului :");
                         String aPrenume = key.nextLine();
-                        while (b2.verificareValoareString(aPrenume) == false) {
-                            System.out.println("Comanda invalida. Introdu din nou :");
+                        while (b2.controlString(aPrenume)) {
+                            System.out.println("Comanda invalida. Reintrodu prenumele actorului :");
                             aPrenume = key.nextLine();
                         }
                         System.out.println("Introdu cnp-ul actorului :");
                         String aCnp = key.nextLine();
-                        while (b2.verificareValoareString(aCnp) == false) {
-                            System.out.println("Comanda invalida. Introdu din nou :");
+                        while (b2.controlString(aCnp)) {
+                            System.out.println("Comanda invalida. Reintrodu cnp-ul actorului :");
                             aCnp = key.nextLine();
                         }
                         Actori a = new Actori(aNume, aPrenume, aCnp);
                         System.out.println("Introduceti varsta actorului :");
                         String varsta = key.nextLine();
-                        while (b2.verificareValoareInt(varsta) == false) {
-                            System.out.println("Comanda invalida. Introdu din nou :");
+                        while (b2.controlInt(varsta)) {
+                            System.out.println("Comanda invalida. Reintrodu varsta actorului :");
                             varsta = key.nextLine();
                         }
                         int varsta2 = Integer.parseInt(tipProdus);
                         a.setVarsta(varsta2);
                         f.getActori().add(a);
                         System.out.println("Vrei sa mai introduci un actor?");
-                        System.out.println("1 - Da");
-                        System.out.println("2 - Nu");
-                        String test = key.nextLine();
-                        while (b2.verificareValoareInt(test) == false) {
-                            System.out.println("Comanda invalida. Introdu din nou :");
+                        System.out.println("Da");
+                        System.out.println("Nu");
+                        test = key.nextLine();
+                        while (!Objects.equals(test, "Da") && !Objects.equals(test, "Nu")) {
+                            System.out.println("Comanda nu exista. Reintrodu comanda :");
                             test = key.nextLine();
                         }
-                        test2 = Integer.parseInt(test);
                     }
                     System.out.println("Introdu genul filmului :");
                     String gender = key.nextLine();
-                    while (b2.verificareValoareString(gender) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlString(gender)) {
+                        System.out.println("Comanda invalida. Reintrodu genul filmului :");
                         gender = key.nextLine();
                     }
                     f.setGender(gender);
                     System.out.println("Introdu durata filmului :");
                     String durata = key.nextLine();
-                    while (b2.verificareValoareDouble(durata) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlDouble(durata)) {
+                        System.out.println("Comanda invalida. Reintrodu durata filmului :");
                         durata = key.nextLine();
                     }
                     double durata2 = Double.parseDouble(durata);
@@ -125,30 +130,35 @@ public class TemaFisier {
                     Jocuri j = new Jocuri();
                     System.out.println("Introdu numele jocului :");
                     String nume = key.nextLine();
-                    while (b2.verificareValoareString(nume) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
-                        nume = key.nextLine();
+                    while (b2.controlString(nume) || b2.controlDublura(nume)) {
+                        if (b2.controlString(nume)) {
+                            System.out.println("Comanda invalida. Reintrodu numele jocului :");
+                            nume = key.nextLine();
+                        } else if (b2.controlDublura(nume)) {
+                            System.out.println("Acest joc exista. Reintrodu numele jocului :");
+                            nume = key.nextLine();
+                        }
                     }
                     j.setNume(nume);
                     System.out.println("Introdu pretul jocului :");
                     String pret = key.nextLine();
-                    while (b2.verificareValoareDouble(pret) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlDouble(pret)) {
+                        System.out.println("Comanda invalida. Reintrodu pretul jocului :");
                         pret = key.nextLine();
                     }
                     double pret2 = Double.parseDouble(pret);
                     j.setPret(pret2);
                     System.out.println("Introdu data de lansare a jocului :");
                     String date = key.nextLine();
-                    while (b2.verificareValoareString(date) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlString(date)) {
+                        System.out.println("Comanda invalida. Reintrodu data de lansare a jocului :");
                         date = key.nextLine();
                     }
                     j.setDate(date);
                     System.out.println("Introdu tipul jocului :");
                     String tipJoc = key.nextLine();
-                    while (b2.verificareValoareString(tipJoc) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlString(tipJoc)) {
+                        System.out.println("Comanda invalida. Reintrodu tipul jocului :");
                         tipJoc = key.nextLine();
                     }
                     j.setTipDeJoc(tipJoc);
@@ -159,30 +169,35 @@ public class TemaFisier {
                     Carti c = new Carti();
                     System.out.println("Introdu numele cartii :");
                     String nume = key.nextLine();
-                    while (b2.verificareValoareString(nume) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
-                        nume = key.nextLine();
+                    while (b2.controlString(nume) || b2.controlDublura(nume)) {
+                        if (b2.controlString(nume)) {
+                            System.out.println("Comanda invalida. Reintrou numele cartii :");
+                            nume = key.nextLine();
+                        } else if (b2.controlDublura(nume)) {
+                            System.out.println("Acesta carte exista. Reintrodu numele cartii :");
+                            nume = key.nextLine();
+                        }
                     }
                     c.setNume(nume);
                     System.out.println("Introdu pretul cartii :");
                     String pret = key.nextLine();
-                    while (b2.verificareValoareDouble(pret) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlDouble(pret)) {
+                        System.out.println("Comanda invalida. Reintrodu pretu cartii :");
                         pret = key.nextLine();
                     }
                     double pret2 = Double.parseDouble(pret);
                     c.setPret(pret2);
                     System.out.println("Introdu data de lansare a cartii :");
                     String date = key.nextLine();
-                    while (b2.verificareValoareString(date) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlString(date)) {
+                        System.out.println("Comanda invalida. Reintrodu data de lansare a cartii :");
                         date = key.nextLine();
                     }
                     c.setDate(date);
                     System.out.println("Introdu numarul de carti :");
                     String nrCarti = key.nextLine();
-                    while (b2.verificareValoareInt(nrCarti) == false) {
-                        System.out.println("Comanda invalida. Introdu din nou :");
+                    while (b2.controlInt(nrCarti)) {
+                        System.out.println("Comanda invalida. Reintrodu numarul de carti :");
                         nrCarti = key.nextLine();
                     }
                     int nrCarti2 = Integer.parseInt(tipProdus);
@@ -193,9 +208,14 @@ public class TemaFisier {
             } else if (comanda2 == 3) {
                 System.out.println("Numele produsului pe care vrei sa-l stergi :");
                 String numeProdus = key.nextLine();
-                while (b2.verificareValoareString(numeProdus) == false) {
-                    System.out.println("Comanda invalida. Introdu din nou :");
-                    numeProdus = key.nextLine();
+                while (b2.controlString(numeProdus) || !b2.controlDublura(numeProdus)) {
+                    if (b2.controlString(numeProdus)) {
+                        System.out.println("Comanda invalida. Reintrodu numele produsului pe care vrei sa-l stegi :");
+                        numeProdus = key.nextLine();
+                    } else if (!b2.controlDublura(numeProdus)) {
+                        System.out.println("Acest produs nu exista. Reintrodu numele produsului pe care vrei sa-l stergi :");
+                        numeProdus = key.nextLine();
+                    }
                 }
                 b2.removeProdus(numeProdus);
                 System.out.println("Produsul a fost sters.");
@@ -208,10 +228,8 @@ public class TemaFisier {
             } else if (comanda2 == 6) {
                 break;
             } else {
-                System.out.println("Comanda nu exista. Introdu din nou comanda.");
+                System.out.println("Comanda nu exista. Reintrodu comanda.");
             }
         }
     }
-
-
 }

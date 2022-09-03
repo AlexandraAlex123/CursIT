@@ -4,12 +4,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Biblioteca {
     Jocuri[] joc = new Jocuri[3];
-    Filme[] film;
-    Carti[] carte;
 
 
     ArrayList<Produse> produs = new ArrayList<>();
@@ -17,6 +16,7 @@ public class Biblioteca {
     public ArrayList<Produse> getP() {
         return produs;
     }
+
 
     public void setP(ArrayList<Produse> p) {
         this.produs = p;
@@ -27,6 +27,7 @@ public class Biblioteca {
         produs.add(p);
     }
 
+
     void removeProdus(String numeProdus) {
         for (int i = 0; i < produs.size(); i++) {
             String t = getP().get(i).getNume();
@@ -36,6 +37,7 @@ public class Biblioteca {
             }
         }
     }
+
 
     void addGame(Jocuri j) {
         for (int i = 0; i <= joc.length; i++) {
@@ -53,6 +55,7 @@ public class Biblioteca {
         }
     }
 
+
     void removeGame(String numeJocSters) {
         boolean test = false;
         for (int i = 0; i < joc.length; i++) {
@@ -65,26 +68,23 @@ public class Biblioteca {
                     test = true;
                     break;
                 }
-
-            }
-
-            if (test) {
-                System.out.println("Jocul a fost sters");
-            } else {
-                System.out.println("Jocul nu a fost gasit");
             }
         }
-
+        if (test) {
+            System.out.println("Jocul a fost sters");
+        } else {
+            System.out.println("Jocul nu a fost gasit");
+        }
     }
+
 
     void foundGame(String numeTipDeJoc) {
         boolean test = false;
-        for (int i = 0; i < joc.length; i++) {
-            if (numeTipDeJoc.equals(joc[i].getTipDeJoc())) {
+        for (Jocuri jocuri : joc) {
+            if (numeTipDeJoc.equals(jocuri.getTipDeJoc())) {
                 test = true;
                 break;
             }
-
         }
         if (test) {
             System.out.println("Tipul de joc exista.");
@@ -100,11 +100,11 @@ public class Biblioteca {
             FileWriter fisierScris = new FileWriter(fisier);
             for (Produse p : getP()) {
                 if (p instanceof Jocuri) {
-                    fisierScris.write(p.toString() + "\n");
+                    fisierScris.write(p + "\n");
                 } else if (p instanceof Filme) {
-                    fisierScris.write(p.toString() + "\n");
+                    fisierScris.write(p + "\n");
                 } else if (p instanceof Carti) {
-                    fisierScris.write(p.toString() + "\n");
+                    fisierScris.write(p + "\n");
                 }
             }
             fisierScris.close();
@@ -113,7 +113,8 @@ public class Biblioteca {
         }
     }
 
-    public Biblioteca afisareProduse(Biblioteca b2) {
+
+    public void afisareProduse(Biblioteca b2) {
         try {
             File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
             Scanner myReader = new Scanner(citire);
@@ -123,14 +124,14 @@ public class Biblioteca {
                 if (s[0].equals("Joc")) {
                     Jocuri j = new Jocuri();
                     j.setNume(s[1]);
-                    j.setPret(Double.valueOf(s[2]));
+                    j.setPret(Double.parseDouble(s[2]));
                     j.setDate(s[3]);
                     j.setTipDeJoc(s[4]);
                     b2.addProdus(j);
                 } else if (s[0].equals("Film")) {
                     Filme f = new Filme();
                     f.setNume(s[1]);
-                    f.setPret(Double.valueOf(s[2]));
+                    f.setPret(Double.parseDouble(s[2]));
                     f.setDate(s[3]);
 
                     String[] actori = s[4].split(",");
@@ -140,27 +141,26 @@ public class Biblioteca {
                         aa.setVarsta(Integer.parseInt(pers[4]));
                         f.getActori().add(aa);
                     }
-                    f.setDurata(Double.valueOf(s[5]));
+                    f.setDurata(Double.parseDouble(s[5]));
                     f.setGender(s[6]);
                     b2.addProdus(f);
                 } else if (s[0].equals("Carte")) {
                     Carti c = new Carti();
                     c.setNume(s[1]);
-                    c.setPret(Double.valueOf(s[2]));
+                    c.setPret(Double.parseDouble(s[2]));
                     c.setDate(s[3]);
                     c.setNrCarti(Integer.parseInt(s[4]));
                     b2.addProdus(c);
                 }
                 System.out.println(data);
             }
-
         } catch (IOException e) {
-            System.out.println("not found");
+            System.out.println("Error : " + e.getMessage());
         }
-        return b2;
     }
 
-    public Produse citireFisier() {
+
+    public void citireFisier() {
         try {
             File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
             Scanner myReader = new Scanner(citire);
@@ -168,12 +168,48 @@ public class Biblioteca {
                 String data = myReader.nextLine();
                 System.out.println(data);
             }
-
         } catch (IOException e) {
-            System.out.println("not found");
+            System.out.println("Error : " + e.getMessage());
         }
-        return null;
     }
+
+
+    public boolean controlString(String stringDeVerificat) {
+        char[] c = stringDeVerificat.toCharArray();
+        if (!stringDeVerificat.equals("")) {
+            return c.length < 1;
+        }
+        return true;
+    }
+
+
+    public boolean controlInt(String stringDeVerificat) {
+        return Objects.equals(stringDeVerificat, "") || !stringDeVerificat.matches("[\\d.]+");
+    }
+
+
+    public boolean controlDouble(String stringDeVerificat) {
+        return Objects.equals(stringDeVerificat, "") || !stringDeVerificat.matches("\\d{0,2}\\.\\d{1,2}");
+    }
+
+
+//    public boolean controlActori(String nume, String prenume) {
+//        for (Produse p : getP()){
+//
+//        }
+//    }
+
+
+    public boolean controlDublura(String nume) {
+        for (Produse p : getP()) {
+            String t = p.getNume();
+            if (nume.equals(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void getFilme() {
         for (Produse p : getP()) {
@@ -185,42 +221,14 @@ public class Biblioteca {
     }
 
 
-    public boolean verificareValoareString(String stringDeVerificat) {
-        char[] c = stringDeVerificat.toCharArray();
-        if (stringDeVerificat != "") {
-            if (c.length >= 1) {
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
-
-    public boolean verificareValoareInt(String stringDeVerificat) {
-        if (stringDeVerificat != "" && stringDeVerificat.matches("[\\d.]+")) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public boolean verificareValoareDouble(String stringDeVerificat) {
-        if (stringDeVerificat != "" && stringDeVerificat.matches("\\d{0,2}\\.\\d{1,2}")) {
-            return true;
-        }
-        return false;
-    }
-
-
     public void getJocuri() {
         for (Produse p : getP()) {
             if (p instanceof Jocuri) {
                 System.out.println(p.getNume());
             }
         }
-
     }
+
 
     public void getCarti() {
         for (Produse p : getP()) {

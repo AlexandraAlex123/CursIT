@@ -7,7 +7,19 @@ public class Filme extends Produse {
     private String gender;
 
     private double durata;
+
+
     private ArrayList<Actori> actor = new ArrayList<>();
+
+
+    public ArrayList<Actori> getActor() {
+        return actor;
+    }
+
+
+    public void setActor(ArrayList<Actori> actor) {
+        this.actor = actor;
+    }
 
 
     public String getGender() {
@@ -35,9 +47,9 @@ public class Filme extends Produse {
     }
 
     //overriding
-    public String getNume() {
-        return nume.toUpperCase();
-    }
+//    public String getNume() {
+//        return nume.toUpperCase();
+//    }
 
     public String toString() {
         return "Film" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + actor.toString() + ";" + this.durata + ";" + this.gender + " ";

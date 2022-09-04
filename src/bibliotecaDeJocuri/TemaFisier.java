@@ -79,9 +79,13 @@ public class TemaFisier {
                         }
                         System.out.println("Introdu prenumele actorului :");
                         String aPrenume = key.nextLine();
-                        while (b2.controlString(aPrenume)) {
+                        while (b2.controlString(aPrenume)) { //|| b2.controlActori(aNume, aPrenume)) {
+//                            if (b2.controlString(aPrenume)) {
                             System.out.println("Comanda invalida. Reintrodu prenumele actorului :");
                             aPrenume = key.nextLine();
+//                            } else if (b2.controlActori(aNume, aPrenume)) {
+//                                System.out.println("Acest Actor exista");
+//                            }
                         }
                         System.out.println("Introdu cnp-ul actorului :");
                         String aCnp = key.nextLine();
@@ -99,6 +103,7 @@ public class TemaFisier {
                         int varsta2 = Integer.parseInt(tipProdus);
                         a.setVarsta(varsta2);
                         f.getActori().add(a);
+                        System.out.println("Actorul a fost adaugat.");
                         System.out.println("Vrei sa mai introduci un actor?");
                         System.out.println("Da");
                         System.out.println("Nu");

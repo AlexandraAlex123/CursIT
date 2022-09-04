@@ -177,7 +177,7 @@ public class Biblioteca {
     public boolean controlString(String stringDeVerificat) {
         char[] c = stringDeVerificat.toCharArray();
         if (!stringDeVerificat.equals("")) {
-            return c.length < 1;
+            return c.length < 2;
         }
         return true;
     }
@@ -193,11 +193,16 @@ public class Biblioteca {
     }
 
 
-//    public boolean controlActori(String nume, String prenume) {
-//        for (Produse p : getP()){
-//
-//        }
-//    }
+    public boolean controlActori(String nume, String prenume) {
+        for (Produse p : getP()) {
+            for (Actori a : ((Filme) p).getActori()) {
+                if (nume.equals(a.getNume()) && prenume.equals(a.getPrenume())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
     public boolean controlDublura(String nume) {

@@ -55,7 +55,7 @@ public class Jocuri extends Produse {
 //        return nume.toLowerCase();
 //    }
     public String toString() {
-        return "Joc" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
+        return "Joc;" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
     }
 
 }

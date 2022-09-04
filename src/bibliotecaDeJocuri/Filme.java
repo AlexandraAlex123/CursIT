@@ -52,7 +52,7 @@ public class Filme extends Produse {
 //    }
 
     public String toString() {
-        return "Film" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + actor.toString() + ";" + this.durata + ";" + this.gender + " ";
+        return "Film;" + this.nume + ";" + this.pret + ";" + this.date + ";" + actor.toString() + ";" + this.durata + ";" + this.gender + " ";
     }
 
 }

@@ -13,6 +13,6 @@ public class Carti extends Produse {
     }
 
     public String toString() {
-        return "Carte" + ";" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.nrCarti;
+        return "Carte;" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.nrCarti;
     }
 }

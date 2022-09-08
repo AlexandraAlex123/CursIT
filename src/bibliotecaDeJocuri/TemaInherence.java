@@ -113,8 +113,8 @@ public class TemaInherence {
 
 
 //        try {
-//            FileOutputStream fisier = new FileOutputStream("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea" );
-//            File fisier = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+//            FileOutputStream fisier = new FileOutputStream("FisierulMeu.txt");
+//            File fisier = new File("FisierulMeu.txt");
 //            FileWriter fisierScris = new FileWriter(fisier);
 //            BufferedWriter bfisier = new BufferedWriter(fisier1);
 //            for (Produse p : b.getP()) {
@@ -133,7 +133,7 @@ public class TemaInherence {
 
 
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+            File citire = new File("FisierulMeu.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -141,7 +141,7 @@ public class TemaInherence {
             }
 
         } catch (IOException e) {
-            System.out.println("not found");
+            System.out.println("Error : " + e.getMessage());
         }
 
         // FileReader in  = new FileReader("BibliotecaMea.txt");

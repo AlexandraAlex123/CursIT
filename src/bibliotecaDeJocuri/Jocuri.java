@@ -23,9 +23,11 @@ public class Jocuri extends Produse {
 
     void setTipDeJoc(String tdjParam) {
         for (String tdjiterator : posibilTipDeJoc) {
-            if (tdjParam.equals(tdjiterator)) {
-                tipDeJoc = tdjParam;
-                break;
+            if (tdjiterator != null) {
+                if (tdjParam.equals(tdjiterator)) {
+                    tipDeJoc = tdjParam;
+                    break;
+                }
             }
         }
     }
@@ -55,7 +57,7 @@ public class Jocuri extends Produse {
 //        return nume.toLowerCase();
 //    }
     public String toString() {
-        return "Joc;" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc + " ";
+        return "Joc;" + this.nume + ";" + this.pret + ";" + this.date + ";" + this.tipDeJoc ;
     }
 
 }

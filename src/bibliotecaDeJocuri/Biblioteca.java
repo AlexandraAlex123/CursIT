@@ -96,7 +96,7 @@ public class Biblioteca {
 
     public void salvareFisier() {
         try {
-            File fisier = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+            File fisier = new File("FisierulMeu.txt");
             FileWriter fisierScris = new FileWriter(fisier);
             for (Produse p : getP()) {
                 if (p instanceof Jocuri) {
@@ -114,9 +114,9 @@ public class Biblioteca {
     }
 
 
-    public void afisareProduse(Biblioteca b2) {
+    public void loadingProduse(Biblioteca b2) {
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+            File citire = new File("FisierulMeu.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -162,7 +162,7 @@ public class Biblioteca {
 
     public void citireFisier() {
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\bibliotecaDeJocuri\\BibliotecaMea");
+            File citire = new File("FisierulMeu.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

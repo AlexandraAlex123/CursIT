@@ -60,7 +60,7 @@ public class Main {
                                     System.out.print("ID movie:  ");
                                     System.out.println(idMovie);
                                     System.out.print("Movie's name: ");
-                                    String movieName = controlDubluraName(log,key,"movie", "Movie's name: ");
+                                    String movieName = controlDubluraName(log, key, "movie", "Movie's name: ");
                                     System.out.print("Price: ");
                                     double price = Double.parseDouble(controlDouble(log, key, "Price: "));
                                     System.out.print("Gender: ");
@@ -105,7 +105,7 @@ public class Main {
                                 log.deleteActor(idMovie);
                             } else if (comanda.equals("4")) {
                                 break;
-                            }else{
+                            } else {
                                 System.out.println("Command not found. Try again..");
                             }
                         }
@@ -121,7 +121,7 @@ public class Main {
                                 comanda = "1";
                                 while (comanda.equals("1")) {
                                     System.out.print("Game's name:  ");
-                                    String gameName = controlDubluraName(log,key, "game", "Game's name: ");
+                                    String gameName = controlDubluraName(log, key, "game", "Game's name: ");
                                     System.out.print("Price: ");
                                     double price = Double.parseDouble(controlDouble(log, key, "Price: "));
                                     System.out.print("Release date(dd-mm-yyy): ");
@@ -142,7 +142,7 @@ public class Main {
                                 controlDelete(log, key, "game", "Delete game: ");
                             } else if (comanda.equals("4")) {
                                 break;
-                            }else{
+                            } else {
                                 System.out.println("Command not found. Try again..");
                             }
                         }
@@ -175,7 +175,9 @@ public class Main {
                             } else if (comanda.equals("3")) {
                                 System.out.print("Delete book: ");
                                 controlDelete(log, key, "book", "Delete book");
-                            }else{
+                            } else if (comanda.equals("4")) {
+                                break;
+                            } else {
                                 System.out.println("Command not found. Try again..");
                             }
                         }

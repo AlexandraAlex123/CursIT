@@ -1,5 +1,7 @@
 package exercitiiHashMap;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -10,7 +12,7 @@ public class Login {
     MyConnection c = new MyConnection();
 
 
-    static public String getHash(String password) {
+    static public String getHash(@NotNull String password) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -280,7 +282,7 @@ public class Login {
     }
 
 
-    public boolean controlStringName(String name) {
+    public boolean controlStringName(@NotNull String name) {
         char[] c = name.toCharArray();
         if (!name.equals("")) {
             return c.length < 2;
@@ -289,7 +291,7 @@ public class Login {
     }
 
 
-    public boolean controlStringUser(String userName) {
+    public boolean controlStringUser(@NotNull String userName) {
         char[] c = userName.toCharArray();
         if (!userName.contains(" ")) {
             return c.length < 6;
@@ -298,7 +300,7 @@ public class Login {
     }
 
 
-    public boolean controlStringPassword(String password) {
+    public boolean controlStringPassword(@NotNull String password) {
         char[] c = password.toCharArray();
         if (!password.contains(" ")) {
             return c.length < 6;
@@ -307,7 +309,7 @@ public class Login {
     }
 
 
-    public boolean controlStringComanda(String comanda) {
+    public boolean controlStringComanda(@NotNull String comanda) {
         char[] c = comanda.toCharArray();
         if (!comanda.equals(" ")) {
             return c.length != 1;

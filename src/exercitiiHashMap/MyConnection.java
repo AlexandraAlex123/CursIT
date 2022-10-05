@@ -63,32 +63,4 @@ public class MyConnection {
         return password;
     }
 
-
-//    public String conection() {
-//        String url;
-//        String username;
-//        String password = null;
-//        try {
-//            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\exercitiiHashMap\\ConexiuneaMea");
-//            Scanner myReader = new Scanner(citire);
-//            while (myReader.hasNextLine()) {
-//                String word = myReader.nextLine();
-//                String[] s = word.split(" ");
-//                if ("url".equals(s[0])) {
-//                    url = s[1];
-//                    return url;
-//                } else if ("user".equals(s[0])) {
-//                    username = s[1];
-//                    return username;
-//                } else if ("password".equals(s[0])) {
-//                    password = s[1];
-//                }
-//            }
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//        System.out.println("Connecting database...");
-//        return password;
-//    }
-
 }

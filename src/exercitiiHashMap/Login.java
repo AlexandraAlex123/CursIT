@@ -10,7 +10,6 @@ public class Login {
     MyConnection c = new MyConnection();
 
 
-
     static public String getHash(String password) {
         String generatedPassword = null;
         try {
@@ -215,8 +214,8 @@ public class Login {
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("select * from login where username = '" + userName + "' and password = '" + passwordHash + "';");
                 if (rs.next()) {
-                    int rs2 = statement.executeUpdate("update login set password = '"+newPasswordHash+"' where username = '"+userName+"';");
-                    if(rs2!=0){
+                    int rs2 = statement.executeUpdate("update login set password = '" + newPasswordHash + "' where username = '" + userName + "';");
+                    if (rs2 != 0) {
                         System.out.println("Password changed");
                     }
                 } else {

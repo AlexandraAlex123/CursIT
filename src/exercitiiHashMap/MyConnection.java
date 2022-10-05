@@ -5,9 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MyConnection {
-    private String url;
-    private String username;
-    private String password;
 
     public String getUrl() throws RuntimeException {
         String url = null;

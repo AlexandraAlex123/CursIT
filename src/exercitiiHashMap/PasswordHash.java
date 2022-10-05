@@ -3,11 +3,15 @@ package exercitiiHashMap;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
+
 public class PasswordHash {
     public static void main(String[] args)
     {
         String passwordToHash = "mama";
         String generatedPassword = null;
+
+
 
         try
         {

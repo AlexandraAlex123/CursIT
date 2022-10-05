@@ -9,13 +9,14 @@ public class MyConnection {
     public String getUrl() throws RuntimeException {
         String url = null;
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\exercitiiHashMap\\ConexiuneaMea");
+            File citire = new File("MyConnection.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");
                 if ("url".equals(s[0])) {
                     url = s[1];
+                    break;
                 }
             }
         } catch (FileNotFoundException e) {
@@ -24,16 +25,17 @@ public class MyConnection {
         return url;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         String username = null;
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\exercitiiHashMap\\ConexiuneaMea");
+            File citire = new File("MyConnection.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");
                 if ("username".equals(s[0])) {
                     username = s[1];
+                    break;
                 }
             }
         } catch (FileNotFoundException e) {
@@ -42,16 +44,17 @@ public class MyConnection {
         return username;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         String password = null;
         try {
-            File citire = new File("C:\\Users\\Lenovo\\IdeaProjects\\untitled\\src\\exercitiiHashMap\\ConexiuneaMea");
+            File citire = new File("MyConnection.txt");
             Scanner myReader = new Scanner(citire);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");
                 if ("password".equals(s[0])) {
                     password = s[1];
+                    break;
                 }
             }
         } catch (FileNotFoundException e) {

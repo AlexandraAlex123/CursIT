@@ -60,7 +60,7 @@ public class Main {
                                     System.out.print("ID movie:  ");
                                     System.out.println(idMovie);
                                     System.out.print("Movie's name: ");
-                                    String movieName = controlName(log, key, "Movie's name: ");
+                                    String movieName = controlDubluraName(log,key,"movie", "Movie's name: ");
                                     System.out.print("Price: ");
                                     double price = Double.parseDouble(controlDouble(log, key, "Price: "));
                                     System.out.print("Gender: ");
@@ -105,6 +105,8 @@ public class Main {
                                 log.deleteActor(idMovie);
                             } else if (comanda.equals("4")) {
                                 break;
+                            }else{
+                                System.out.println("Command not found. Try again..");
                             }
                         }
                     } else if (comanda.equals("2")) {
@@ -119,7 +121,7 @@ public class Main {
                                 comanda = "1";
                                 while (comanda.equals("1")) {
                                     System.out.print("Game's name:  ");
-                                    String gameName = controlName(log, key, "Game's name: ");
+                                    String gameName = controlDubluraName(log,key, "game", "Game's name: ");
                                     System.out.print("Price: ");
                                     double price = Double.parseDouble(controlDouble(log, key, "Price: "));
                                     System.out.print("Release date(dd-mm-yyy): ");
@@ -137,9 +139,11 @@ public class Main {
                                 }
                             } else if (comanda.equals("3")) {
                                 System.out.print("Delete game: ");
-                                controlDelete(log,key, "game","Delete game: ");
+                                controlDelete(log, key, "game", "Delete game: ");
                             } else if (comanda.equals("4")) {
                                 break;
+                            }else{
+                                System.out.println("Command not found. Try again..");
                             }
                         }
                     } else if (comanda.equals("3")) {
@@ -154,7 +158,7 @@ public class Main {
                                 comanda = "1";
                                 while (comanda.equals("1")) {
                                     System.out.print("Book's name:  ");
-                                    String bookName = controlName(log, key, "Game's name: ");
+                                    String bookName = controlDubluraName(log, key, "book", "Book's name: ");
                                     System.out.print("Price: ");
                                     double price = Double.parseDouble(controlDouble(log, key, "Price: "));
                                     System.out.print("Release date(dd-mm-yyy): ");
@@ -171,18 +175,20 @@ public class Main {
                             } else if (comanda.equals("3")) {
                                 System.out.print("Delete book: ");
                                 controlDelete(log, key, "book", "Delete book");
+                            }else{
+                                System.out.println("Command not found. Try again..");
                             }
                         }
-                    }else if (comanda.equals("4")) {
+                    } else if (comanda.equals("4")) {
                         System.out.print("Enter new password: ");
                         String newPassword = controlPassword(log, key);
                         System.out.print("Enter old password: ");
                         password = controlPassword(log, key);
-                        log.changePassword(userName,newPassword,password);
+                        log.changePassword(userName, newPassword, password);
                     } else if (comanda.equals("5")) {
                         break;
-                    }else {
-                        System.out.println("This command don't exit. Try again..");
+                    } else {
+                        System.out.println("Command not found. Try again..");
                     }
                 }
             } else if ("2".equals(comanda)) {
@@ -194,7 +200,7 @@ public class Main {
             } else if ("3".equals(comanda)) {
                 break;
             } else {
-                System.out.println("This command don't exit. Try again..");
+                System.out.println("Command not found. Try again..");
             }
         }
     }
@@ -218,6 +224,7 @@ public class Main {
         return userName;
     }
 
+
     static void controlDelete(Login log, Scanner key, String table, String message) {
         String delete = controlName(log, key, message);
         while (log.deleteProduct(delete, table)) {
@@ -225,6 +232,7 @@ public class Main {
             delete = controlName(log, key, message);
         }
     }
+
 
     static String controlComanda(Login log, Scanner key) {
         String comanda = key.nextLine();
@@ -234,6 +242,7 @@ public class Main {
         }
         return comanda;
     }
+
 
     static String controlUsername(Login log, Scanner key) {
         String userName = key.nextLine();
@@ -245,6 +254,7 @@ public class Main {
         return userName;
     }
 
+
     static String controlPassword(Login log, Scanner key) {
         String pwd = key.nextLine();
         while (log.controlStringPassword(pwd)) {
@@ -254,6 +264,17 @@ public class Main {
         }
         return pwd;
     }
+
+
+    static String controlDubluraName(Login log, Scanner key, String table, String message) {
+        String name = controlName(log, key, message);
+        while (log.nameExist(name, table)) {
+            System.out.print(message);
+            name = controlName(log, key, message);
+        }
+        return name;
+    }
+
 
     static String controlName(Login log, Scanner key, String message) {
         String name = key.nextLine();

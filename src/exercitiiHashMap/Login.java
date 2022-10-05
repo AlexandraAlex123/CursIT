@@ -17,8 +17,8 @@ public class Login {
             md.update(password.getBytes());
             byte[] bytes = md.digest();
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            for (byte aByte : bytes) {
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
             generatedPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -99,6 +99,23 @@ public class Login {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
     }
+
+    public boolean nameExist(String name, String table) {
+        try {
+            try (Connection connection = DriverManager.getConnection(c.getUrl(), c.getUsername(), c.getPassword())) {
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery("select * from " + table + " where name = '" + name + "';");
+                if (rs.next()) {
+                    System.out.println("This " + table + " exist. ");
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        return false;
+    }
+
 
 
     public Integer getIdForMovie() {
@@ -239,11 +256,11 @@ public class Login {
                         return true;
                     }
                 }
-                return false;
             }
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
+        return false;
     }
 
 

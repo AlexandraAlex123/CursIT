@@ -9,8 +9,8 @@ public class MyConnection {
     public String getUrl() throws RuntimeException {
         String url = null;
         try {
-            File citire = new File("MyConnection.txt");
-            Scanner myReader = new Scanner(citire);
+            File read = new File("MyConnection.txt");
+            Scanner myReader = new Scanner(read);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");
@@ -28,8 +28,8 @@ public class MyConnection {
     public String getUsername() {
         String username = null;
         try {
-            File citire = new File("MyConnection.txt");
-            Scanner myReader = new Scanner(citire);
+            File read = new File("MyConnection.txt");
+            Scanner myReader = new Scanner(read);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");
@@ -47,8 +47,8 @@ public class MyConnection {
     public String getPassword() {
         String password = null;
         try {
-            File citire = new File("MyConnection.txt");
-            Scanner myReader = new Scanner(citire);
+            File read = new File("MyConnection.txt");
+            Scanner myReader = new Scanner(read);
             while (myReader.hasNextLine()) {
                 String word = myReader.nextLine();
                 String[] s = word.split(" ");

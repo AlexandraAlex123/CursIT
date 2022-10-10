@@ -4,7 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Scanner;
 
-public class Practice {
+public class MainPractice {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
         Scanner key = new Scanner(System.in);
         LoginPractice log = new LoginPractice();

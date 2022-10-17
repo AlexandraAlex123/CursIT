@@ -2,7 +2,7 @@ package exercitiiHashMap;
 
 
 import java.util.Scanner;
-import login.Login;
+//import login.Login;
 
 public class Testing {
     public static void main(String[] args) {
@@ -17,9 +17,9 @@ public class Testing {
             System.out.println("3 Exit");
             String command = key.next();
             if (command.equals("1")) {
-                 Login.login();
+//                 Login.login();
             } else if ("2".equals(command)) {
-                Login.register();
+//                Login.register();
             } else if ("3".equals(command)) {
                 break;
             } else {

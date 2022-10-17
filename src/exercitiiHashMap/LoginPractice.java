@@ -1,5 +1,6 @@
 package exercitiiHashMap;
 
+import aplicatieLogin.MyConnection;
 import org.jetbrains.annotations.NotNull;
 
 import java.security.MessageDigest;
